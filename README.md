@@ -32,6 +32,10 @@
 
 **本项目彻底颠覆了这种传统模式。** 它利用 LLM Agent（智能体）充当家庭的"首席信息官"，将 Home Assistant（家电与环境）和 UniFi（射频与拓扑）彻底抽象为大模型的**工具矩阵（Tool Matrix）**。大模型每小时自主决定调用哪些工具探索家里的蛛丝马迹，最终将复杂的物理世界数据提炼成极具"人情味"的三段式大白话总结，并优雅地推送到一块低功耗、高质感的电子墨水屏上。
 
+<img width="300" height="200" alt="demo2" src="https://github.com/user-attachments/assets/1615423a-7e9f-4161-8db8-ca7ac1d3eeec" />
+<img width="300" height="200" alt="demo1" src="https://github.com/user-attachments/assets/6f1e5e45-9ee5-4a1e-8254-9f3f6d45b556" />
+<img width="300" height="400" alt="demo3" src="https://github.com/user-attachments/assets/69e78ef0-c700-4f85-947d-bac3166f70cc" />
+
 ---
 
 ## 为什么"开源设计，弱化代码"？
