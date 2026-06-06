@@ -1,0 +1,44 @@
+# config/entity_catalog.yaml — 示例文件
+# 手动维护的实体目录，定义房间和其下的 Home Assistant 实体
+# 首轮快照时按此结构拉取实时状态
+#
+# 复制为 entity_catalog.yaml 并按实际环境修改
+
+rooms:
+  - name: outdoor
+    entities:
+      - { id: sensor.outdoor_temperature, label: Outdoor Temp, type: temperature }
+      - { id: sensor.outdoor_humidity, label: Outdoor Humidity, type: humidity }
+
+  - name: living_room
+    entities:
+      - { id: sensor.living_temp, label: Living Room Temp, type: temperature }
+      - { id: sensor.living_humidity, label: Living Room Humidity, type: humidity }
+      - { id: climate.living_ac, label: Living Room AC, type: climate }
+      - { id: light.living_main, label: Living Main Light, type: light }
+
+  - name: bedroom
+    entities:
+      - { id: sensor.bedroom_temp, label: Bedroom Temp, type: temperature }
+      - { id: sensor.bedroom_humidity, label: Bedroom Humidity, type: humidity }
+      - { id: climate.bedroom_ac, label: Bedroom AC, type: climate }
+      - { id: cover.bedroom_curtain, label: Bedroom Curtain, type: cover }
+
+  - name: study
+    entities:
+      - { id: sensor.study_temp, label: Study Temp, type: temperature }
+      - { id: sensor.study_humidity, label: Study Humidity, type: humidity }
+      - { id: light.study_light, label: Study Light, type: light }
+
+# 首轮快照时自动拉取状态的实体列表（与 rooms 中的实体 ID 一致）
+snapshot_entities:
+  - sensor.outdoor_temperature
+  - sensor.outdoor_humidity
+  - sensor.living_temp
+  - sensor.living_humidity
+  - climate.living_ac
+  - sensor.bedroom_temp
+  - sensor.bedroom_humidity
+  - climate.bedroom_ac
+  - sensor.study_temp
+  - sensor.study_humidity

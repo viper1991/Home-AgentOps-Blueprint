@@ -1,0 +1,62 @@
+# HAB 全局配置 — 示例文件
+# 复制为 config.yaml 并填入真实值
+
+ha:
+  url: "http://<ha-ip>:8123"
+  token: "<ha-long-lived-access-token>"
+
+unifi:
+  url: "https://<unifi-controller-ip>:8443"
+  username: "<read-only-username>"
+  password: "<password>"
+  site: "default"
+
+llm:
+  provider: "deepseek"         # 当前仅支持 deepseek
+  model: "deepseek-v4-flash"
+  base_url: "https://api.deepseek.com"
+  api_key_env: "DEEPSEEK_API_KEY"   # 从环境变量读取，不要在配置文件中写死
+  max_tokens_per_turn: 2000
+  temperature: 0.3
+
+agent:
+  max_rounds: 4                # 首轮后最多额外交互轮数（最后一轮仅 final_output）
+  tools_per_round: 2           # 每轮 LLM 最多调用 2 个工具
+  max_room_status_calls: 3     # get_room_status 全局最大调用次数
+  max_trend_calls: 3           # get_trend 全局最大调用次数
+  max_trend_hours: 4           # get_trend 单次最大历史范围
+
+schedule:
+  lightweight_interval: 300
+  heavyweight_interval: 3600
+  night_lightweight: 1800
+  night_heavyweight: 7200
+  night_start: 23
+  night_end: 7
+
+display:
+  daemon_host: "127.0.0.1"
+  daemon_port: 5150
+  layout:
+    top_ratio: 0.8
+    bottom_ratio: 0.2
+    columns: 3
+    column_labels: ["传感器", "网络", "事件"]
+  font:
+    path: "fonts/wqy-microhei.ttc"
+    name: "wqy-microhei.ttc"
+    title_size: 22
+    body_size: 18
+    summary_size: 20
+    # wqy-microhei (文泉驿微米黑) 是开源中文字体，已在 fonts/ 目录提供
+    # 也可替换为任意 .ttf/.ttc/.otf 中文字体（如 Source Han Sans）
+
+epaper:
+  model: "4in26"
+  width: 800
+  height: 480
+
+working_memory:
+  keep_count: 10
+  outputs_dir: "outputs"
+  dedup_check_recent: 3

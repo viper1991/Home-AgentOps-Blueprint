@@ -1,0 +1,41 @@
+# ── Secrets & Config ──────────────────────────────────
+# config.yaml / entity_catalog.yaml / prompts.yaml 均含敏感信息
+config/config.yaml
+config/entity_catalog.yaml
+config/prompts.yaml
+
+# ── Python Bytecode ───────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Runtime Data ─────────────────────────────────────
+outputs/
+registry/
+logs/
+config/tool_usage.json
+
+# ── Environment ──────────────────────────────────────
+.env
+.env.*
+venv/
+.venv/
+virtualenv/
+
+# ── IDE & OS ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Dev / Scratch ────────────────────────────────────
+# 旧项目名 PDF（已重命名，不再生成）
+my_home_GitHub_README_Guide.pdf
