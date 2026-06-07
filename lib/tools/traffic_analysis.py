@@ -116,20 +116,13 @@ class GetTrafficAnalysisTool(Tool):
 
     def _device_dpi(self, mac: str) -> dict:
         """单设备 DPI 画像。"""
-        try:
-            resp = self._unifi._session.post(
-                self._unifi._base + f'/api/s/{self._unifi._site}/stat/stadpi',
-                json={'type': 'by_app', 'macs': [mac]},
-                headers={'X-Csrf-Token': self._unifi._csrf_token or ''},
-                timeout=30,
-            )
-            data = resp.json().get('data', [])
-        except Exception as e:
-            logger.warning('get_traffic_analysis stadpi failed: %s', e)
-            return {'error': f'设备 DPI 获取失败: {e}'}
-
+        data = self._unifi.post(
+            f'/api/s/{self._unifi.site}/stat/stadpi',
+            json={'type': 'by_app', 'macs': [mac]},
+            timeout=30,
+        )
         if not data:
-            return {'device_mac': mac, 'apps': [], 'note': '该设备无 DPI 数据'}
+            return {'error': '设备 DPI 获取失败（UniFi 不可用或返回空数据）'}
 
         apps = data[0].get('by_app', [])
         ranked = sorted(
