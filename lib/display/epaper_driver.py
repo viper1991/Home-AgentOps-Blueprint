@@ -31,8 +31,9 @@ def _find_waveshare_lib() -> str | None:
 
 _waveshare_path = _find_waveshare_lib()
 if _waveshare_path:
-    if _waveshare_path not in sys.path:
-        sys.path.insert(0, _waveshare_path)
+    _parent = os.path.dirname(_waveshare_path)
+    if _parent not in sys.path:
+        sys.path.insert(0, _parent)
     logger.info("Waveshare lib path: %s", _waveshare_path)
 
 _import_error = None
@@ -132,9 +133,6 @@ class EPaperDriver:
             _epd4in26 = None
             logger.warning("Using MOCK EPD driver (waveshare unavailable: %s)", e)
             return None
-
-        self.width = self._epd.width
-        self.height = self._epd.height
 
     def init(self):
         """全刷初始化 (~4s)。"""
